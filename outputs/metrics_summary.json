@@ -1,0 +1,12 @@
+{
+    "cnn": {
+        "test_accuracy": 0.9945999979972839,
+        "test_loss": 0.014948981814086437,
+        "epochs_trained": 8
+    },
+    "mlp": {
+        "test_accuracy": 0.9799000024795532,
+        "test_loss": 0.06756502389907837,
+        "epochs_trained": 8
+    }
+}

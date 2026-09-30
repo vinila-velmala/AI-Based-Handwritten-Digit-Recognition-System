@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Handwritten Digit Recognition System</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="background-glow top-left"></div>
+    <div class="background-glow bottom-right"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="badge">Deep Learning & Computer Vision</div>
+            <h1 class="main-title">Handwritten Digit Recognition System</h1>
+            <p class="subtitle">Powered by Deep Convolutional Neural Networks (CNN) trained on the MNIST Dataset (60,000 samples)</p>
+        </header>
+
+        <!-- Model Selector & Stats Bar -->
+        <div class="stats-bar glass-card">
+            <div class="model-picker">
+                <span class="picker-label">Active Model:</span>
+                <div class="toggle-group" id="modelToggleGroup">
+                    <button type="button" class="toggle-btn active" id="btnModelCNN" onclick="selectModel('cnn')">
+                        <span class="dot"></span> Deep CNN (99.2% Acc)
+                    </button>
+                    <button type="button" class="toggle-btn" id="btnModelMLP" onclick="selectModel('mlp')">
+                        <span class="dot"></span> MLP Baseline (98.0% Acc)
+                    </button>
+                </div>
+            </div>
+            <div class="stat-pills">
+                <div class="pill">
+                    <span class="pill-label">Dataset</span>
+                    <span class="pill-val">MNIST (0–9)</span>
+                </div>
+                <div class="pill">
+                    <span class="pill-label">Input Size</span>
+                    <span class="pill-val">28 × 28 Grayscale</span>
+                </div>
+                <div class="pill">
+                    <span class="pill-label">Latency</span>
+                    <span class="pill-val" id="latencyVal">~12 ms</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Workspace Grid -->
+        <div class="workspace-grid">
+            <!-- Left Column: Input Pad / Upload -->
+            <div class="card glass-card input-section">
+                <div class="card-header">
+                    <div class="tabs">
+                        <button type="button" class="tab-btn active" id="tabDraw" onclick="switchTab('draw')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                            Draw Digit
+                        </button>
+                        <button type="button" class="tab-btn" id="tabUpload" onclick="switchTab('upload')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            Upload Image
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Drawing Tab Content -->
+                <div id="drawContainer" class="tab-content active">
+                    <div class="canvas-wrapper">
+                        <canvas id="drawingCanvas" width="280" height="280"></canvas>
+                        <div class="canvas-overlay-hint">Draw a single digit (0–9) in the center</div>
+                    </div>
+                    <div class="controls-row">
+                        <div class="brush-size-picker">
+                            <label for="brushSize">Brush:</label>
+                            <input type="range" id="brushSize" min="12" max="30" value="20" title="Pen Thickness">
+                            <span id="brushSizeVal">20px</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button type="button" class="btn btn-secondary" id="btnClearCanvas" onclick="clearCanvas()">
+                                Clear
+                            </button>
+                            <button type="button" class="btn btn-primary" id="btnClassifyDraw" onclick="classifyCurrent()">
+                                Recognize Digit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Tab Content -->
+                <div id="uploadContainer" class="tab-content">
+                    <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                        <svg class="upload-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9m-4-4 4-4 4 4"/>
+                        </svg>
+                        <p class="drop-text">Drag & drop your digit image here, or <span>Browse</span></p>
+                        <span class="drop-subtext">Supports PNG, JPG, JPEG</span>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                    <div id="uploadPreviewWrapper" class="upload-preview-wrapper" style="display: none;">
+                        <img id="uploadPreviewImg" alt="Upload Preview">
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="resetUpload()">Upload Another</button>
+                    </div>
+                </div>
+
+                <!-- Quick Samples Tray -->
+                <div class="samples-tray">
+                    <span class="tray-label">Quick Test Samples:</span>
+                    <div class="samples-list" id="samplesList">
+                        <!-- Loaded dynamically or static presets -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Prediction & Probabilities -->
+            <div class="card glass-card results-section">
+                <div class="card-header">
+                    <h2>Model Prediction Results</h2>
+                    <span class="status-indicator live" id="statusBadge">Ready</span>
+                </div>
+
+                <!-- Main Highlight Output -->
+                <div class="prediction-hero">
+                    <div class="pred-left">
+                        <div class="digit-display" id="digitDisplay">—</div>
+                        <div class="digit-label">Predicted Class</div>
+                    </div>
+                    <div class="pred-right">
+                        <div class="confidence-box">
+                            <span class="conf-title">Confidence</span>
+                            <span class="conf-number" id="confidenceDisplay">0.0%</span>
+                            <div class="conf-bar-container">
+                                <div class="conf-bar-fill" id="confBarFill" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                        <div class="preprocessed-preview">
+                            <span class="prev-title">MNIST 28×28 Processed View</span>
+                            <img id="processedImgPreview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' fill='%23111827'/%3E%3C/svg%3E" alt="Processed 28x28 Input">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Softmax Probability Distribution Chart -->
+                <div class="probabilities-container">
+                    <div class="prob-header">
+                        <h3>Softmax Class Probabilities (0–9)</h3>
+                        <span class="prob-subtitle">Confidence across all digit hypotheses</span>
+                    </div>
+                    <div class="prob-bars" id="probBarsContainer">
+                        <!-- 10 probability bars rendered via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Architectural Info Section -->
+        <section class="info-section glass-card">
+            <h2 class="section-title">Pipeline Architecture & Implementation Highlights</h2>
+            <div class="info-grid">
+                <div class="info-box">
+                    <div class="box-icon">1</div>
+                    <h3>Intelligent Normalization</h3>
+                    <p>User drawings undergo automatic aspect-ratio-preserving 20×20 bounding box scaling, padding to 28×28, and center-of-mass translation to perfectly replicate the MNIST data distribution.</p>
+                </div>
+                <div class="info-box">
+                    <div class="box-icon">2</div>
+                    <h3>Dual-Block Deep CNN</h3>
+                    <p>Stack of 3×3 convolutions (32 & 64 filters) with Batch Normalization, Max Pooling, and Dropout regularizers (0.25 & 0.40) to minimize overfitting and achieve 99.2%+ accuracy.</p>
+                </div>
+                <div class="info-box">
+                    <div class="box-icon">3</div>
+                    <h3>Comparative Benchmark</h3>
+                    <p>Side-by-side verification with an MLP (Multilayer Perceptron) reveals why convolutional kernels excel at detecting localized edge and curve features over dense flat vectors.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Major Project: AI-Based Handwritten Digit Recognition System | Built with TensorFlow, Keras & Flask</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
