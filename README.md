@@ -3,13 +3,10 @@
 [![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
 [![Keras](https://img.shields.io/badge/Keras-3.x-red)](https://keras.io/)
-[![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-brightgreen)](https://vinila-velmala.github.io/AI-Based-Handwritten-Digit-Recognition-System/)
+[![Flask](https://img.shields.io/badge/Flask-3.x-green)](https://flask.palletsprojects.com/)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
 
-An end-to-end Computer Vision & Deep Learning major project that recognizes handwritten digits (0–9) using Convolutional Neural Networks (CNNs). Includes training pipelines, baseline MLP comparisons, comprehensive evaluation metrics, and a modern, interactive web application.
-
-### 🌐 Live Web Demo (No Installation Required):
-👉 **[https://vinila-velmala.github.io/AI-Based-Handwritten-Digit-Recognition-System/](https://vinila-velmala.github.io/AI-Based-Handwritten-Digit-Recognition-System/)**
+An end-to-end Computer Vision & Deep Learning major project that recognizes handwritten digits (0–9) using Convolutional Neural Networks (CNNs). Includes training pipelines, baseline MLP comparisons, comprehensive evaluation metrics, and a modern, interactive web application for real-time drawing and image classification.
 
 ---
 
