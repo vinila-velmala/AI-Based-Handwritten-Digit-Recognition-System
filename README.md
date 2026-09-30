@@ -8,6 +8,11 @@
 
 An end-to-end Computer Vision & Deep Learning major project that recognizes handwritten digits (0–9) using Convolutional Neural Networks (CNNs). Includes training pipelines, baseline MLP comparisons, comprehensive evaluation metrics, and a modern, interactive web application for real-time drawing and image classification.
 
+### 💻 Local Application Status
+Your Python/Flask application runs locally on your machine:
+* **Local Web Interface:** [http://localhost:5000](http://localhost:5000/) or [http://127.0.0.1:5000](http://127.0.0.1:5000/)
+* **Local Network Access:** [http://192.168.31.11:5000](http://192.168.31.11:5000/)
+
 ---
 
 ## 📌 Project Overview
