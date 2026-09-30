@@ -1,0 +1,184 @@
+[
+  {
+    "name": "kernel",
+    "shape": [
+      3,
+      3,
+      1,
+      32
+    ],
+    "byte_length": 1152
+  },
+  {
+    "name": "bias",
+    "shape": [
+      32
+    ],
+    "byte_length": 128
+  },
+  {
+    "name": "gamma",
+    "shape": [
+      32
+    ],
+    "byte_length": 128
+  },
+  {
+    "name": "beta",
+    "shape": [
+      32
+    ],
+    "byte_length": 128
+  },
+  {
+    "name": "moving_mean",
+    "shape": [
+      32
+    ],
+    "byte_length": 128
+  },
+  {
+    "name": "moving_variance",
+    "shape": [
+      32
+    ],
+    "byte_length": 128
+  },
+  {
+    "name": "kernel",
+    "shape": [
+      3,
+      3,
+      32,
+      32
+    ],
+    "byte_length": 36864
+  },
+  {
+    "name": "bias",
+    "shape": [
+      32
+    ],
+    "byte_length": 128
+  },
+  {
+    "name": "kernel",
+    "shape": [
+      3,
+      3,
+      32,
+      64
+    ],
+    "byte_length": 73728
+  },
+  {
+    "name": "bias",
+    "shape": [
+      64
+    ],
+    "byte_length": 256
+  },
+  {
+    "name": "gamma",
+    "shape": [
+      64
+    ],
+    "byte_length": 256
+  },
+  {
+    "name": "beta",
+    "shape": [
+      64
+    ],
+    "byte_length": 256
+  },
+  {
+    "name": "moving_mean",
+    "shape": [
+      64
+    ],
+    "byte_length": 256
+  },
+  {
+    "name": "moving_variance",
+    "shape": [
+      64
+    ],
+    "byte_length": 256
+  },
+  {
+    "name": "kernel",
+    "shape": [
+      3,
+      3,
+      64,
+      64
+    ],
+    "byte_length": 147456
+  },
+  {
+    "name": "bias",
+    "shape": [
+      64
+    ],
+    "byte_length": 256
+  },
+  {
+    "name": "kernel",
+    "shape": [
+      3136,
+      128
+    ],
+    "byte_length": 1605632
+  },
+  {
+    "name": "bias",
+    "shape": [
+      128
+    ],
+    "byte_length": 512
+  },
+  {
+    "name": "gamma",
+    "shape": [
+      128
+    ],
+    "byte_length": 512
+  },
+  {
+    "name": "beta",
+    "shape": [
+      128
+    ],
+    "byte_length": 512
+  },
+  {
+    "name": "moving_mean",
+    "shape": [
+      128
+    ],
+    "byte_length": 512
+  },
+  {
+    "name": "moving_variance",
+    "shape": [
+      128
+    ],
+    "byte_length": 512
+  },
+  {
+    "name": "kernel",
+    "shape": [
+      128,
+      10
+    ],
+    "byte_length": 5120
+  },
+  {
+    "name": "bias",
+    "shape": [
+      10
+    ],
+    "byte_length": 40
+  }
+]

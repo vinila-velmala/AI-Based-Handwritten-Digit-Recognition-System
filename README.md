@@ -4,14 +4,18 @@
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
 [![Keras](https://img.shields.io/badge/Keras-3.x-red)](https://keras.io/)
 [![Flask](https://img.shields.io/badge/Flask-3.x-green)](https://flask.palletsprojects.com/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-brightgreen)](https://vinila-velmala.github.io/AI-Based-Handwritten-Digit-Recognition-System/)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
 
-An end-to-end Computer Vision & Deep Learning major project that recognizes handwritten digits (0–9) using Convolutional Neural Networks (CNNs). Includes training pipelines, baseline MLP comparisons, comprehensive evaluation metrics, and a modern, interactive web application for real-time drawing and image classification.
+An end-to-end Computer Vision & Deep Learning major project that recognizes handwritten digits (0–9) using Convolutional Neural Networks (CNNs). Includes training pipelines, baseline MLP comparisons, comprehensive evaluation metrics, and interactive web deployment.
 
-### 💻 Local Application Status
-Your Python/Flask application runs locally on your machine:
-* **Local Web Interface:** [http://localhost:5000](http://localhost:5000/) or [http://127.0.0.1:5000](http://127.0.0.1:5000/)
-* **Local Network Access:** [http://192.168.31.11:5000](http://192.168.31.11:5000/)
+### 🌐 Web Application Access
+- 🚀 **Online GitHub Pages Demo (No Installation Required):**  
+  👉 **[https://vinila-velmala.github.io/AI-Based-Handwritten-Digit-Recognition-System/](https://vinila-velmala.github.io/AI-Based-Handwritten-Digit-Recognition-System/)**
+
+- 💻 **Local Web Access (Running on Your Machine):**  
+  👉 **[http://localhost:5000](http://localhost:5000/)** or **[http://127.0.0.1:5000](http://127.0.0.1:5000/)**  
+  *(Local Network Wi-Fi Access: `http://192.168.31.11:5000`)*
 
 ---
 
