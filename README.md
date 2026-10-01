@@ -13,7 +13,7 @@ An end-to-end Computer Vision & Deep Learning major project that recognizes hand
   👉 **[https://vinila-velmala.github.io/AI-Based-Handwritten-Digit-Recognition-System/](https://vinila-velmala.github.io/AI-Based-Handwritten-Digit-Recognition-System/)**
 
 - 💻 **Local Web Access (Running on Your Machine):**  
-  1. Run `python app.py` in your terminal.  
+  1. Double-click **`run_app.bat`** (Windows 1-click launcher) OR run `python app.py` in your terminal.  
   2. Open: [http://localhost:5000](http://localhost:5000/) or [http://127.0.0.1:5000](http://127.0.0.1:5000/)  
   *(Local Network Wi-Fi Access: `http://192.168.1.102:5000`)*
 
@@ -66,6 +66,7 @@ Handwritten Digit/
 ├── train.py                             # Complete model training script
 ├── evaluate.py                          # Evaluation, confusion matrix & error analysis
 ├── app.py                               # Flask web server & inference API
+├── run_app.bat                          # Windows 1-click launcher for Flask web app
 ├── handwritten_digit_recognition.ipynb  # Interactive, step-by-step Jupyter Notebook
 ├── requirements.txt                     # Python package dependencies
 ├── REPORT.md                            # Comprehensive Major Project Academic Report
