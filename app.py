@@ -124,8 +124,20 @@ def get_sample(digit):
     return jsonify({"status": "success", "image": img_b64, "digit": digit})
 
 
+import webbrowser
+import threading
+import time
+
+
+def open_browser(port_num):
+    time.sleep(1.2)
+    webbrowser.open(f"http://127.0.0.1:{port_num}")
+
+
 if __name__ == "__main__":
     load_models()
     port = int(os.environ.get("PORT", 5000))
     print(f"Starting Handwritten Digit Recognition Web App on http://127.0.0.1:{port}")
+    threading.Thread(target=open_browser, args=(port,), daemon=True).start()
     app.run(host="0.0.0.0", port=port, debug=False)
+
