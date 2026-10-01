@@ -8,12 +8,14 @@
 
 An end-to-end Computer Vision & Deep Learning major project that recognizes handwritten digits (0–9) using Convolutional Neural Networks (CNNs). Includes training pipelines, baseline MLP comparisons, comprehensive evaluation metrics, and a modern, interactive web application for real-time drawing and image classification.
 
-### 💻 Local Web Access
-> **Important:** This is a local Flask application that runs on your personal machine, not an online hosted website. You must first start the server locally before clicking the link:
-> 1. Run `python app.py` in your terminal.
-> 2. Once the server is running, open:
->    * **Local Web Interface:** [http://127.0.0.1:5000](http://127.0.0.1:5000/) or [http://localhost:5000](http://localhost:5000/)
->    * **Local Network Access:** `http://<your-local-ip>:5000`
+### 🌐 Web Application Access
+- 🚀 **Online GitHub Pages Demo (Live in Browser):**  
+  👉 **[https://vinila-velmala.github.io/AI-Based-Handwritten-Digit-Recognition-System/](https://vinila-velmala.github.io/AI-Based-Handwritten-Digit-Recognition-System/)**
+
+- 💻 **Local Web Access (Running on Your Machine):**  
+  1. Run `python app.py` in your terminal.  
+  2. Open: [http://localhost:5000](http://localhost:5000/) or [http://127.0.0.1:5000](http://127.0.0.1:5000/)  
+  *(Local Network Wi-Fi Access: `http://192.168.1.102:5000`)*
 
 ---
 
